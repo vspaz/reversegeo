@@ -1,6 +1,6 @@
 # reversegeo
 
- reversegeo is a small utility that does reverse geocoding using latitute/longitude data.
+ reversegeo is a cli utility that does reverse geocoding using latitute/longitude data.
  
  ## How-to
  
