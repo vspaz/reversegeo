@@ -21,8 +21,8 @@ def from_files(files):
 
 def to_csv(file_path, fields):
     if not os.path.exists(file_path):
-        open(file_path, "x").close()
-    with open(file_path, "a") as fh:
+        open(file_path, 'x').close()
+    with open(file_path, 'a') as fh:
         writer = csv.writer(fh)
         writer.writerow(fields)
 
@@ -40,7 +40,7 @@ def get_csv_dump_path(country, dump_directory, paths_cache={}):
     if not file_path:
         file_path = os.path.join(
             dump_directory,
-            country.lower() + ".csv"
+            country.lower() + '.csv'
         )
         paths_cache[country] = file_path
     return file_path
