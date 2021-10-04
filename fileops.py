@@ -40,7 +40,7 @@ def get_csv_dump_path(country, dump_directory, paths_cache={}):
     if not file_path:
         file_path = os.path.join(
             dump_directory,
-            country.lower() + '.csv'
+            country.lower() + '.csv',
         )
         paths_cache[country] = file_path
     return file_path

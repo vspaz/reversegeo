@@ -57,7 +57,8 @@ def get_args():
         '--files',
         default='*.csv',
         type=str,
-        help='filter csv files with a regular expression')
+        help='filter csv files with a regular expression',
+    )
 
     args = argparser.parse_args()
 
@@ -69,7 +70,7 @@ def configure_logger(logger_config):
         'stream': sys.stderr,
         'level': logging.INFO,
         'format': '%(asctime)s.%(msecs)03d %(levelname)s: %(message)s',
-        'datefmt': '%Y-%m-%d %X'
+        'datefmt': '%Y-%m-%d %X',
     }
 
     if logger_config:
@@ -105,8 +106,10 @@ def main():
                 continue
             fields = coord.split(',')
             fields.append(city.lower())
-            dump_file_path = get_csv_dump_path(country=country,
-                                               dump_directory=args.dump)
+            dump_file_path = get_csv_dump_path(
+                country=country,
+                dump_directory=args.dump,
+            )
             to_csv(file_path=dump_file_path, fields=fields)
         except KeyboardInterrupt:
             logging.info('Processing interrupted')

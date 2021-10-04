@@ -12,7 +12,7 @@ class GoogleApiClient:
             max_retries=Retry(
                 total=self._http.get('retries', 3),
                 backoff_factor=self._http.get('delay', 0.1),
-            )
+            ),
         )
 
         self._session = requests.Session()
@@ -24,7 +24,7 @@ class GoogleApiClient:
             params={
                 'latlng': latlng,
                 'key': self._api['key'],
-                'result_type': self._api.get('result_type', '')
+                'result_type': self._api.get('result_type', ''),
             },
             timeout=self._http.get('timeout', 0.1),
         ).json()

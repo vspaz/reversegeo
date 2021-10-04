@@ -10,7 +10,7 @@ _API = {
             'type': 'string',
         },
         'result_type': {
-            'type': 'string'
+            'type': 'string',
         },
         'key': {
             'type': 'string',
@@ -48,7 +48,7 @@ _LOGGING = {
         },
         'logdir': {
             'type': 'string',
-        }
+        },
     },
     'additionalProperties': False,
 }
