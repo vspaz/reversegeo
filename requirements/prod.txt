@@ -1,2 +1,2 @@
-jsonschema==2.6.0
-requests==2.21.0
+jsonschema==4.0.1
+requests==2.26.0
