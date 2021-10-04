@@ -1,7 +1,7 @@
 import argparse
 import json
 
-from jsonschema import validate, Draft4Validator
+from jsonschema import Draft4Validator, validate
 
 _API = {
     'type': 'object',

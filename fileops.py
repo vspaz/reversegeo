@@ -1,5 +1,5 @@
-import glob
 import csv
+import glob
 import os
 
 

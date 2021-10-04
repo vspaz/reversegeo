@@ -8,7 +8,7 @@ import sys
 
 from __version__ import version
 from config import ConfigValidator
-from fileops import from_files, get_files, get_csv_dump_path, to_csv
+from fileops import from_files, get_csv_dump_path, get_files, to_csv
 from filters import get_european_country_and_city
 from googleapiclient import GoogleApiClient
 
