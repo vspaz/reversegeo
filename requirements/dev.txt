@@ -1,7 +1,7 @@
-add-trailing-comma==4.1.0
+add-trailing-comma==2.1.0
 flake8==3.9.2
 isort==5.9.3
 pytest==6.2.5
-pytest-sugar=0.9.4
+pytest-sugar==0.9.4
 trim==0.3
 unify==0.1.1
