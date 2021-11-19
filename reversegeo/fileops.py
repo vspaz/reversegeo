@@ -1,5 +1,6 @@
 import csv
 import glob
+import json
 import os
 
 
@@ -44,3 +45,7 @@ def get_csv_dump_path(country, dump_directory, paths_cache={}):
         )
         paths_cache[country] = file_path
     return file_path
+
+
+def from_json(deserializable):
+    return json.loads(deserializable)
