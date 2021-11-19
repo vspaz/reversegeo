@@ -1,7 +1,3 @@
-vspaz, [04.10.21 22:05]
-	.PHONY: install
-
-
 isort:
 	  isort .
 
