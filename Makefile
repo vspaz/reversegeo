@@ -1,8 +1,11 @@
-isort:
-	  isort .
+build:
+	python3 setup.py install
 
 test:
-	  python3 pytest
+	  python3 -m pytest .
+
+isort:
+	  isort .
 
 flake8:
 	  python3 -m flake8 .

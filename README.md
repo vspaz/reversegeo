@@ -6,10 +6,21 @@ see more at https://developers.google.com/maps/documentation/geocoding/overview#
 
  ## How-to
 
+### Install
+
+```shell
+git clone git@github.com:vspaz/reversegeo.git
+cd reversegeo
+make build  # or python3 setup.py install
+```
+
+**NOTE**
+ You might probably wish to use some sort of virtualenv, Docker etc. for that!
+
  ### Configuration
  reverse geocoding utility is configurable via config.
 
- ```
+ ```json
  {
     "api": {
         "url": "https://maps.googleapis.com/maps/api/geocode/json",
@@ -51,8 +62,8 @@ see more at https://developers.google.com/maps/documentation/geocoding/overview#
 ### Command line options
 
 
-```
-./reversegeo.py -h
+```shell
+reversegeo.py -h
 usage: reversegeo -c cfg.json -s [source] -d [dump] -f [files]
 
 utility to retrieve reverse geocoding data from google API.
@@ -73,8 +84,8 @@ optional arguments:
 **required params**
 
 - -c, --config
-```
-./reversegeo.py -c reversegeo.json
+```shell
+reversegeo.py -c reversegeo.json
 ```
 
 **optional params**
@@ -87,21 +98,10 @@ optional arguments:
  - -f, --files, regex or exact file name. used together with -s option. default value is '*.csv'.
  - -d, --dump - folder to dump files split by countries. default reversegeo/dump
 
- ### Installation & Use
-
- Currently it's not packaged and can be used as a command line utility only.
- it doesn't have too many external dependencies, so installation is pretty simple.
-
- pip3 install -r reversegeo/requirements/prod.txt
- tested with python3.5, but other python3 versions should work as well.
-
- **NOTE**
- You might probably wish to use some sort of virtualenv, Docker etc. for that!
-
  ### How to run
 
- ```
- ./reversegeo -c reversegeo.json
+ ```shell
+ reversegeo -c reversegeo.json
  ```
 
  the examples of data source files and dumped files can be found in data and
