@@ -1,11 +1,10 @@
 import os
 import sys
 
-from filters import get_european_country_and_city
-from googleapiclient import GoogleApiClient
-from reversegeo import cli
-from reversegeo import fileops
+from reversegeo import cli, fileops
 from reversegeo.__version__ import __version__
+from reversegeo.filters import get_european_country_and_city
+from reversegeo.googleapiclient import GoogleApiClient
 from reversegeo.log import configure_logger
 
 
