@@ -2,6 +2,8 @@
 
  reversegeo is a cli utility that does reverse geocoding using Google API geo data.
 
+see more at https://developers.google.com/maps/documentation/geocoding/overview#ReverseGeocoding
+
  ## How-to
 
  ### Configuration

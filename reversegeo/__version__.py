@@ -1,1 +1,7 @@
-__version__ = '0.0-dev1'
+__title__ = 'reversegeo'
+__description__ = 'Reverse geodecoding utility'
+__url__ = 'https://github.com/vspaz/reversegeo'
+__email__ = 'wlodzimierz.trzmielinsky@gmail.com'
+__author__ = 'vspaz'
+__maintainer__ = 'vspaz'
+__version__ = '0.1.1'

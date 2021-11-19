@@ -1,4 +1,4 @@
-_EUROPE = {
+_EUROPE = frozenset([
     'AD',
     'AL',
     'AT',
@@ -48,7 +48,7 @@ _EUROPE = {
     'SK',
     'SM',
     'UA',
-}
+])
 
 
 def get_european_country_and_city(resp):

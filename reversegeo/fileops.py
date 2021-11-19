@@ -8,7 +8,6 @@ def _from_csv(file):
     with open(file) as fh:
         line = fh.readline()  # skip header
         while line:
-            # no need to parse csv until rows are filtered.
             line = fh.readline().strip()
             if line:
                 yield line

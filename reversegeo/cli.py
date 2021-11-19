@@ -3,14 +3,14 @@
 import argparse
 import os
 
-from __version__ import __version__
-from config import ConfigValidator
+from reversegeo.__version__ import __version__
+from reversegeo.config import ConfigValidator
 
 
 def get_args():
-    description = 'utility to retrieve reverse geocoding data from google API.'
+    description = 'utility to retrieve reverse geocoding data from Google API.'
     app = 'reversegeo'
-    usage = '%(prog)s -c cfg.json -s [source] -d [dump] -f [files]'
+    usage = f'{app} -c cfg.json -s [source] -d [dump] -f [files]'
     argparser = argparse.ArgumentParser(
         description=description,
         prog=app,
