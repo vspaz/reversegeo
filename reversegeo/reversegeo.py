@@ -1,68 +1,13 @@
-#!/usr/bin/env python3
-
-import argparse
 import json
 import logging
 import os
 import sys
 
-from __version__ import version
-from config import ConfigValidator
 from fileops import from_files, get_csv_dump_path, get_files, to_csv
 from filters import get_european_country_and_city
 from googleapiclient import GoogleApiClient
-
-
-def get_args():
-    description = 'utility to retrieve reverse geocoding data from google API.'
-    prog = 'reversegeo'
-    usage = '%(prog)s -c cfg.json -s [source] -d [dump] -f [files]'
-    argparser = argparse.ArgumentParser(
-        description=description,
-        prog=prog,
-        usage=usage,
-    )
-    argparser.add_argument(
-        '-v',
-        '--version',
-        action='version',
-        version="'{}'".format(version),
-    )
-    argparser.add_argument(
-        '-c',
-        '--config',
-        type=argparse.FileType('r'),
-        dest='config',
-        required=True,
-        action=ConfigValidator,
-        help='absolute path to config.json',
-    )
-    argparser.add_argument(
-        '-s',
-        '--source',
-        default=[os.path.join(os.getcwd(), 'data')],
-        type=str,
-        nargs='+',
-        help='absolute path to source directories',
-    )
-    argparser.add_argument(
-        '-d',
-        '--dump',
-        default=os.path.join(os.getcwd(), 'dump'),
-        type=str,
-        help='absolute path to dump directory',
-    )
-    argparser.add_argument(
-        '-f',
-        '--files',
-        default='*.csv',
-        type=str,
-        help='filter csv files with a regular expression',
-    )
-
-    args = argparser.parse_args()
-
-    return args
+from reversegeo import cli
+from reversegeo.__version__ import __version__
 
 
 def configure_logger(logger_config):
@@ -84,12 +29,12 @@ def configure_logger(logger_config):
 
 
 def main():
-    args = get_args()
+    args = cli.get_args()
     config = json.loads(args.config)
 
     configure_logger(logger_config=config.get('logging'))
-    logging.info('reversegeo %s', version)
-    logging.info('PID = %d', os.getpid())
+    logging.info(f'reversegeo {__version__}!r')
+    logging.info(f'PID = {os.getpid()}')
 
     gclient = GoogleApiClient(config=config)
     logging.info('Trying to read from the csv source file(s)')
