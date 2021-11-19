@@ -11,7 +11,6 @@ from reversegeo.log import configure_logger
 def run():
     args = cli.get_args()
     config = fileops.from_json(deserializable=args.config)
-
     logger = configure_logger(logger_config=config.get('logging'))
     logger.info(f'reversegeo {__version__!r}')
     logger.info(f'PID = {os.getpid()}')
@@ -21,15 +20,16 @@ def run():
 
     csv_files = fileops.get_files(dirs=args.source, pattern=args.files)
     coordinates = fileops.from_files(files=csv_files)
+
     logger.info('Processing started')
     total_count = 0
-    for coord in coordinates:
+    for coordinate in coordinates:
         try:
-            response = gclient.fetch_geo_data(latlng=coord)
+            response = gclient.fetch_geo_data(latlng=coordinate)
             country, city = get_european_country_and_city(resp=response)
             if not all([country, city]):
                 continue
-            fields = coord.split(',')
+            fields = coordinate.split(',')
             fields.append(city.lower())
             dump_file_path = fileops.get_csv_dump_path(
                 country=country,
@@ -39,11 +39,11 @@ def run():
         except KeyboardInterrupt:
             logger.info('Processing interrupted')
             sys.exit(0)
-        except Exception as e:
-            logger.error('%s for coordinates %s', e, coord)
+        except Exception as exc:
+            logger.error(f'{exc} for coordinates {coordinate!r}')
         total_count += 1
     logger.info('Processing complete')
-    logger.info('Processed %s records', total_count)
+    logger.info(f'Processed {total_count!r} records')
     logger.info('Shut down')
 
 
