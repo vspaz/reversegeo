@@ -4,64 +4,64 @@ import json
 from jsonschema import Draft4Validator, validate
 
 _API = {
-    'type': 'object',
-    'properties': {
-        'url': {
-            'type': 'string',
+    "type": "object",
+    "properties": {
+        "url": {
+            "type": "string",
         },
-        'result_type': {
-            'type': 'string',
+        "result_type": {
+            "type": "string",
         },
-        'key': {
-            'type': 'string',
+        "key": {
+            "type": "string",
         },
     },
-    'required': [
-        'url',
-        'key',
-        'result_type',
+    "required": [
+        "url",
+        "key",
+        "result_type",
     ],
-    'additionalProperties': False,
+    "additionalProperties": False,
 }
 
 _HTTP = {
-    'type': 'object',
-    'properties': {
-        'timeout': {
-            'type': 'number',
+    "type": "object",
+    "properties": {
+        "timeout": {
+            "type": "number",
         },
-        'retries': {
-            'type': 'number',
+        "retries": {
+            "type": "number",
         },
-        'delay': {
-            'type': 'number',
+        "delay": {
+            "type": "number",
         },
     },
-    'additionalProperties': False,
+    "additionalProperties": False,
 }
 
 _LOGGING = {
-    'type': 'object',
-    'properties': {
-        'log_file_name': {
-            'type': 'string',
+    "type": "object",
+    "properties": {
+        "log_file_name": {
+            "type": "string",
         },
-        'logdir': {
-            'type': 'string',
+        "logdir": {
+            "type": "string",
         },
     },
-    'additionalProperties': False,
+    "additionalProperties": False,
 }
 
 _CONFIG_SCHEMA = {
-    'type': 'object',
-    'properties': {
-        'api': _API,
-        'http': _HTTP,
-        'logging': _LOGGING,
+    "type": "object",
+    "properties": {
+        "api": _API,
+        "http": _HTTP,
+        "logging": _LOGGING,
     },
-    'required': ['api'],
-    'additionalProperties': False,
+    "required": ["api"],
+    "additionalProperties": False,
 }
 
 
@@ -72,7 +72,7 @@ class ConfigValidator(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         json_string = values.read()
         if not json_string:
-            raise ValueError('file: {} is empty'.format(values.name))
+            raise ValueError("file: {} is empty".format(values.name))
         else:
             config = json.loads(json_string)
             validate(config, _CONFIG_SCHEMA, cls=Draft4Validator)
